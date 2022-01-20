@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["vite/client"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "rootDirs": ["./src"],
+    "baseUrl": "./src",
+    "noImplicitAny": false,
+    "paths": {
+      "@constants/*": ["constants/*"],
+      "@services/*": ["services/*"],
+      "@store/*": ["stores/*"],
+      "@utils/*": ["utils/*"],
+      "@styles/*": ["styles/*"],
+      "@assets/*": ["assets/*"],
+      "@locales/*": ["locales/*"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@providers/*": ["providers/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": false,
+    "jsx": "preserve",
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "./typings/global.d.ts"],
+  "exclude": ["node_modules"]
+}
