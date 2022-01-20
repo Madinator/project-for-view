@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 import { userApiService } from '../../api/users';
 import { tokenService } from '../../local-storage/storage.service';
 import { doRequestAPI } from '../../stores/helpers';
-import { FetchState } from '../../stores/type';
 
 export const authStore = defineStore("authStore", {
     state: ()=> ({
