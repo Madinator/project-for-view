@@ -1,4 +1,4 @@
-import { httpService } from '@services/http/http.service';
+import { httpService } from '../../http/http.service';
 import { API_VERSION } from '../constants';
 import {
   LoginResponse,

@@ -1,2 +1,2 @@
-import queryString from 'query-string';
+import  queryString  from 'queryString';
 export { queryString };

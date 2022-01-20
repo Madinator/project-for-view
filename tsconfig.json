@@ -22,11 +22,15 @@
       "@providers/*": ["providers/*"]
     },
     "allowSyntheticDefaultImports": true,
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
     "jsx": "preserve",
+    "typeRoots": ["node", "node_modules/@types", "./typings"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "./typings/global.d.ts"],
   "exclude": ["node_modules"]

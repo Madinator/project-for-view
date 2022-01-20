@@ -3,7 +3,8 @@ import { mapSearchParams } from './http-helpers';
 import { tokenService } from '../local-storage/storage.service';
 import axios, { AxiosInstance, AxiosRequestConfig, CancelTokenStatic } from 'axios';
 import { DeepUndefinable } from 'ts-essentials';
-import authStore from '@services/stores/authStore';
+import { authStore } from '../stores/authStore';
+
 
 export const headersAppJSON = { 'Content-Type': 'application/json' };
 
@@ -99,6 +100,7 @@ async function responseInterceptionConfigOverride(
   instanceRefresh : any,
   instanceRequest : any,
 ) {
+  const AuthStore = authStore()
   const originalRequest = error.config;
   if (error?.response?.status === 403) {
     return Promise.reject(error);
@@ -135,15 +137,15 @@ async function responseInterceptionConfigOverride(
             //     await authStore.logout();
             //   }
           } else {
-            await authStore.logout();
+            await AuthStore.logout();
           }
 
           console.log('finished tokenRefresh request', response);
         } catch (e) {
-          await authStore.logout();
+          await AuthStore.logout();
         }
       } catch (e) {
-        await authStore.logout();
+        await AuthStore.logout();
       }
     } else {
       return Promise.reject(error);

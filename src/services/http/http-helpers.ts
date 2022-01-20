@@ -1,4 +1,4 @@
-import { isJson } from '@utils/helpers';
+import { isJson } from '../../utils/helpers';
 
 function mapSearchParams(q: Record<string, unknown>) {
   console.log(q, 'mapSearchParams');

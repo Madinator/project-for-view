@@ -1,4 +1,4 @@
-import { isJson } from '@utils/helpers';
+import { isJson } from '../../utils/helpers';
 
 export const tokenKey = '_audio_control_t';
 export const tokenRefreshKey = '_audio_control_tr';

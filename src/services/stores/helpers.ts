@@ -1,5 +1,5 @@
-import { FetchState } from '@services/stores/type';
-import { isNetworkError } from '@utils/helpers';
+import { FetchState } from '../stores/type';
+import { isNetworkError } from '../../utils/helpers';
 import { AxiosError } from 'axios';
 
 
@@ -69,16 +69,3 @@ export const doRequestAPI = async <T>({
 
   return { error, errorStatus: error?.response?.status };
 };
-
-export function normalizeRoleMethods(role: any) {
-  const methods = {};
-  role?.methods?.forEach((m) => {
-    if (m.controller in methods) {
-      methods[m.controller].push(m.name);
-    } else {
-      methods[m.controller] = [m.name];
-    }
-  });
-  role = { ...role, methods };
-  return role;
-}

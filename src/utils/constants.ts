@@ -1,5 +1,3 @@
-import { ISelectOption } from '@components/base';
-
 const baseApiUrl = import.meta.env.VITE_BASE_URL as string;
 
 enum filterIds {
@@ -22,7 +20,7 @@ const roleAccessLevel = {
   2: 'Can view own cabinet',
   3: 'Can view self records',
 };
-const accessLevelOptions: ISelectOption[] = Object.entries(roleAccessLevel).map(
+const accessLevelOptions = Object.entries(roleAccessLevel).map(
   (role) => ({ value: role[0].toString(), label: role[1].toString() }),
 );
 
