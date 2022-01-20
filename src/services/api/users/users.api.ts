@@ -13,7 +13,6 @@ const route = 'users';
 interface UserApiService {
   authorization: (
     v: { username: string; password: string },
-    p?: any,
   ) => Promise<TypedResponse<LoginResponse>>;
   refreshToken: ({ token: string  }, p?: any) => Promise<TypedResponse<RefreshResponse>>;
   create: (v: UserCreateDTO) => Promise<TypedResponse<User>>;
@@ -21,8 +20,8 @@ interface UserApiService {
 }
 
 export const userApiService: UserApiService = {
-  authorization: async ({ username, password }, params) => {
-    return await httpService.post(`/login`, { username, password }, params);
+  authorization: async ({ username, password }) => {
+    return await httpService.post(`/login`, { username, password });
   },
   refreshToken: async ({ token }, params) => {
     return await httpService.get(`/refresh/${token}`, params);

@@ -13,7 +13,7 @@ export const authStore = defineStore("authStore", {
       async login() {
           const { error } = await doRequestAPI({
               reqFunc: async () => {
-                return await userApiService.authorization( this.username, this.password );
+                return await userApiService.authorization({ username : this.username, password : this.password });
               },
               onLoad: (v) => {
                 const { token, refresh_token } = v || {};
