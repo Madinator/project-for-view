@@ -8,7 +8,7 @@ import { authStore } from '../stores/authStore';
 
 export const headersAppJSON = { 'Content-Type': 'application/json' };
 
-const baseApiUrl = "baseurl"
+const baseApiUrl = "https://testapi.osidom.kz/api"
 
 const getHeaderAuth = (auth_token?: string) => {
   return { Authorization: 'Bearer ' + auth_token ?? '' };

@@ -21,7 +21,7 @@ interface UserApiService {
 
 export const userApiService: UserApiService = {
   authorization: async ({ username, password }) => {
-    return await httpService.post(`/login`, { username, password });
+    return await httpService.post(`/Account/LoginMobile`, { username, password });
   },
   refreshToken: async ({ token }, params) => {
     return await httpService.get(`/refresh/${token}`, params);

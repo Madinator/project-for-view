@@ -12,6 +12,7 @@ export const authStore = defineStore("authStore", {
       async login() {
           const { error } = await doRequestAPI({
               reqFunc: async () => {
+                debugger
                 return await userApiService.authorization({ username : this.username, password : this.password });
               },
               onLoad: (v) => {
