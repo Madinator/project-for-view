@@ -1,4 +1,11 @@
+.btn {
+    @apply font-semibold rounded-lg;
+}
+
 .btn-primary {
-    @apply font-semibold;
+    @apply text-white-default;
     background: linear-gradient(180deg, #F57921 -115.38%, #FCAD1C 100%);
+}
+.btn-secondary {
+    @apply text-black-default border-black-default border-2;
 }

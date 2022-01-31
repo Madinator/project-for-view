@@ -4,3 +4,7 @@ export enum InputType {
   Password = "PASSWORD",
 }
 
+export enum ButtonType {
+  Primary = "PRIMARY",
+  Secondary = "SECONDARY",
+}

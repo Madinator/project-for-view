@@ -1,4 +1,3 @@
-import { autorun, makeAutoObservable } from 'mobx';
 const themeKey = 'ac_theme';
 const darkThemeKey = 'theme_dark';
 const lightThemeKey = 'theme_light';
@@ -31,7 +30,6 @@ class ThemeService {
   };
 
   constructor() {
-    makeAutoObservable(this);
 
     const globalThemeEntity = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -47,9 +45,6 @@ class ThemeService {
         e.matches ? this.setIsDarkTheme(true) : this.setIsDarkTheme(false);
       });
     }
-    autorun(() => {
-      this.changeTheme(this.isDarkTheme);
-    });
   }
 }
 

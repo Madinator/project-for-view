@@ -12,16 +12,17 @@ const route = 'users';
 
 interface UserApiService {
   authorization: (
-    v: { username: string; password: string },
+    v: { numberPhone: number; password: string },
   ) => Promise<TypedResponse<LoginResponse>>;
   refreshToken: ({ token: string  }, p?: any) => Promise<TypedResponse<RefreshResponse>>;
   create: (v: UserCreateDTO) => Promise<TypedResponse<User>>;
   update: (ID: number, v: UserUpdateDTO) => Promise<TypedResponse<User>>;
+  requestSMSCode:  ( v: { numberPhone: number, isRegister: boolean }) => Promise<TypedResponse<any>>
 }
 
 export const userApiService: UserApiService = {
-  authorization: async ({ username, password }) => {
-    return await httpService.post(`/Account/LoginMobile`, { username, password });
+  authorization: async ({ numberPhone, password }) => {
+    return await httpService.post(`/Account/LoginWeb`, { numberPhone, password });
   },
   refreshToken: async ({ token }, params) => {
     return await httpService.get(`/refresh/${token}`, params);
@@ -31,5 +32,8 @@ export const userApiService: UserApiService = {
   },
   update: async (ID, data) => {
     return await httpService.patch(`/${API_VERSION}/${route}/${ID}`, data);
+  },
+  requestSMSCode: async ({ numberPhone, isRegister }) => {
+    return await httpService.post(`/Account/RequestSmsCodeWeb`, { numberPhone, isRegister });
   },
 };

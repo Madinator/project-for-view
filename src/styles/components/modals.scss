@@ -1,0 +1,5 @@
+.modal {
+        &::after {
+            @apply absolute inset-0 bg-modal z-10 content-[''];
+        }
+}

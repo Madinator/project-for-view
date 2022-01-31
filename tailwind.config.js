@@ -57,10 +57,30 @@ const fontSizes = {
   sm: 'var(--font-size-sm)',
 };
 
+const colors = {
+  transparent: 'var(--color-transparent)',
+  black:  {
+    default: '#000000',
+  },
+  white: {
+    default: '#ffffff',
+  },
+  primary: {
+    default: 'var(--color-primary-dark)',
+    gray: 'var(--color-primary-gray)',
+  },
+  modal: 'var(--color-modal)',
+  placeholder: 'var(--color-placeholder)',
+  warning: 'var(--color-warning)',
+};
+
 module.exports = {
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{vue,js,ts}'],
   theme: {
     extend: {},
+    colors: colors,
+    textColors: colors,
+    backgroundColors: colors,
     width: (theme) => ({
       auto: 'auto',
       ...spacings,
@@ -78,7 +98,7 @@ module.exports = {
       none: '0',
       sm: '.125rem',
       default: '0.188rem',
-      lg: '.5rem',
+      lg: '.75rem',
       full: '9999px',
     },
     fontSize: {

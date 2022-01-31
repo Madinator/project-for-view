@@ -9,7 +9,7 @@ import ModalError from '../components/modals/ModalError.vue';
 import { InputType, ButtonType } from "../utils/constants"
 
 const AuthStore = authStore();
-const { numberPhone, password, status } = storeToRefs(AuthStore);
+const { numberPhone, isRegister, status } = storeToRefs(AuthStore);
 
 
 const Component = defineComponent({
@@ -23,29 +23,23 @@ const Component = defineComponent({
     },
 })
 
-let ModalErrorHidden = ref(true);
-
 let warningText = ref('');
 
-function hideModalError(): void {
-    ModalErrorHidden.value = true;
-}
 
-async function login() {
-    await AuthStore.login()
+async function RequestSmsCodeWeb() {
+    await AuthStore.RequestSmsCodeWeb();
 
     if(status.value === 200) {
         alert("Вы авторизовались успешно")
     }
 
-    if(status.value === 403) {
+    if(status.value === 404) {
         warningText.value = "Введен неверный пароль"
-        ModalErrorHidden.value = false;
+        alert('User with this number does not exist')
     }
 
     if(status.value === 400) {
         warningText.value = "На этот номер не зарегистрировано ОСИ"
-        ModalErrorHidden.value = false;
     } 
 }
 
@@ -54,19 +48,14 @@ async function login() {
 <template>
     
     <div class="flex-col center" target="frame">
-        <label class="block text-center font-bold text-md">ВХОД</label>
+        <label class="block text-center font-bold text-md">регистрация</label>
         <div class="mt-9 w-[23.25rem] h-[3.25rem]">
             <BaseInput placeholder="+7(___)-__-__" v-model="numberPhone" :type="InputType.Phone"/>
         </div>
-        <div class="mt-5 w-[23.25rem] h-[3.25rem]">
-            <BaseInput placeholder="Пароль" v-model="password" :type="InputType.Password"/>
-        </div>
-        <label class="block text-center mt-4 font-semibold text-base">Забыли пароль?</label>
         <div class="mt-8 w-[23.25rem] h-[3.25rem]">
-            <BaseButton name="Войти" :type="ButtonType.Primary" @click="login"/>
+            <BaseButton name="Запросить СМС код" :type="ButtonType.Primary" @click="RequestSmsCodeWeb"/>
         </div>
-        <label class="block text-center mt-4 font-semibold text-base">Установить пароль</label>
+        <label class="block text-center mt-4 font-semibold text-base">Уже есть аккаунт</label>
     </div>
-    <ModalError @closeModal="hideModalError" :hidden="ModalErrorHidden" :warningText="warningText"/>
 
 </template>

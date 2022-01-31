@@ -1,11 +1,11 @@
 :root {
-    --color-white: #ffffff;
-    --color-black: #000000;
+    --color-transparent: transparent;
+    --color-primary-gray: #BBBBBB; 
+    --color-primary-dark: rgba(0, 0, 0, 0.8);
+    --color-placeholder: #BBBBBB;
+    --color-modal: rgba(0, 0, 0, 0.5);
 
-    --color-primary-gray: #BBBBBB: 
-    --color-primary-black: rgba(0, 0, 0, 0.8);
-
-    --color-error: #D9726B;
+    --color-warning: #D9726B;
 
     --font-size-lg: 32px;
     --font-size-md: 24px;
