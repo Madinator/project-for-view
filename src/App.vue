@@ -1,19 +1,23 @@
 <script setup lang="ts">
 import { defineComponent } from 'vue';
 import Login from "./pages/Login.vue";
-import Regis from "./pages/Regis.vue";
+import PhoneNumber from "./pages/Registration/PhoneNumber.vue";
+import smsCode from "./pages/Registration/smsCode.vue";
+import CreatePassword from "./pages/Registration/CreatePassword.vue"
 
 const Component = defineComponent({
     components: {
       Login,
-      Regis,
+      PhoneNumber,
+      smsCode,
+      CreatePassword
     }
 })
 
 </script>
 
 <template>
-  <Regis />
+  <Login />
 </template>
 
 <style lang="scss">

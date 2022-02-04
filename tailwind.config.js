@@ -7,14 +7,18 @@ const spacings = {
   4: '1rem',
   5: '1.25rem',
   6: '1.5rem',
+  7: '1.75rem',
   8: '2rem',
   9: '2.25rem',
   10: '2.5rem',
   12: '3rem',
+  13: '3.25rem',
   14: '3.5rem',
+  15: '3.75rem',
   16: '4rem',
   18: '4.5rem',
   20: '5rem',
+  23: '5.75rem',
   24: '6rem',
   32: '8rem',
   40: '10rem',
@@ -29,6 +33,7 @@ const spacings = {
   '2/4': '50%',
   '3/4': '75%',
   '1/5': '20%',
+  '1/8': '12.5%',
   '2/5': '40%',
   '3/5': '60%',
   '4/5': '80%',
@@ -50,8 +55,19 @@ const spacings = {
   '11/12': '91.666667%',
 };
 
+const blockSize = {
+    xsw: 'var(--w-block-xs)',
+    xsh: 'var(--h-block-xs)',
+    mdw: 'var(--w-block-base)',
+    mdh: 'var(--h-block-base)',
+    lgw: 'var(--w-block-lg)',
+    lgh: 'var(--h-block-lg)',
+    checkbox: 'var(--checkbox-base)'  
+}
+
 const fontSizes = {
-  lg: 'var(--font-size-lg)',
+  lg: 'var(--font-size-xl)',
+  bgr: 'var(--font-size-lg)',
   md: 'var(--font-size-md)',
   reg: 'var(--font-size-reg)',
   sm: 'var(--font-size-sm)',
@@ -72,6 +88,7 @@ const colors = {
   modal: 'var(--color-modal)',
   placeholder: 'var(--color-placeholder)',
   warning: 'var(--color-warning)',
+  checkbox: 'var(--color-checkbox)',
 };
 
 module.exports = {
@@ -87,12 +104,14 @@ module.exports = {
       fit: 'fit-content',
       full: '100%',
       screen: '100vw',
+      ...blockSize,
     }),
     height: (theme) => ({
       auto: 'auto',
       full: '100%',
       screen: '100vh',
       ...spacings,
+      ...blockSize,
     }),
     borderRadius: {
       none: '0',
@@ -100,10 +119,12 @@ module.exports = {
       default: '0.188rem',
       lg: '.75rem',
       full: '9999px',
+      ...spacings,
     },
     fontSize: {
-      lg: fontSizes.lg, // 32px
-      md: fontSizes.md, // 24px
+      xl: fontSizes.lg, // 32px
+      lg: fontSizes.bgr, // 24px
+      md: fontSizes.md, //20px
       base: fontSizes.reg, // 15px
       xs: fontSizes.sm, // 13px
     },
@@ -114,9 +135,16 @@ module.exports = {
       semibold: 600,
       bold: 700,
     },
+    backgroundImage: {
+      'checkMark': "url('./src/assets/icons/checkMark.svg')"
+    },
+    spacing: (theme) => ({
+      ...spacings,
+    }),
   },
   variants: {},
   plugins: [],
 }
+
 
 

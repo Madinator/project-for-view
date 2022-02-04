@@ -1,0 +1,14 @@
+.checkbox {
+    @apply caret-transparent;
+}
+.checkbox input {
+    @apply hidden block h-0 w-0 absolute overflow-hidden;
+}
+.checkbox span {
+    @apply w-checkbox h-checkbox inline-block border border-black-default rounded-1/8;
+}
+
+[type=checkbox]:checked + span {
+    @apply bg-checkbox bg-checkMark bg-no-repeat bg-center;
+}
+

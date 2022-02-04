@@ -2,30 +2,17 @@
 import { defineComponent, ref } from 'vue';
 import { authStore } from "../services/stores/authStore";
 import { mapState, mapWritableState, storeToRefs} from 'pinia';
-import BaseInput from '../components/base/BaseInput.vue';
-import BaseButton from '../components/base/BaseButton.vue';
-import BaseSelect from '../components/base/BaseSelect.vue'
-import ModalError from '../components/modals/ModalError.vue';
-import { InputType, ButtonType } from "../utils/constants"
+import { InputType } from "../utils/constants"
 
 const AuthStore = authStore();
-const { numberPhone, password, status } = storeToRefs(AuthStore);
+const { numberPhone, password, response } = storeToRefs(AuthStore);
 
 
 const Component = defineComponent({
-    setup() {
-        
-    },
-    components:  {
-        BaseInput,
-        BaseButton,
-        ModalError
-    },
 })
 
 let ModalErrorHidden = ref(true);
-
-let warningText = ref('');
+let text = ref('');
 
 function hideModalError(): void {
     ModalErrorHidden.value = true;
@@ -33,18 +20,9 @@ function hideModalError(): void {
 
 async function login() {
     await AuthStore.login()
-
-    if(status.value === 200) {
-        alert("Вы авторизовались успешно")
-    }
-
-    if(status.value === 403) {
-        warningText.value = "Введен неверный пароль"
-        ModalErrorHidden.value = false;
-    }
-
-    if(status.value === 400) {
-        warningText.value = "На этот номер не зарегистрировано ОСИ"
+    
+    if(response.value.error) {
+        text.value = response.value.text;
         ModalErrorHidden.value = false;
     } 
 }
@@ -55,18 +33,18 @@ async function login() {
     
     <div class="flex-col center" target="frame">
         <label class="block text-center font-bold text-md">ВХОД</label>
-        <div class="mt-9 w-[23.25rem] h-[3.25rem]">
-            <BaseInput placeholder="+7(___)-__-__" v-model="numberPhone" :type="InputType.Phone"/>
+        <div class="mt-9 h-mdh w-mdw">
+            <BaseInput placeholder="+7(___)-__-__" v-model="numberPhone" :type="InputType.Phone" :mask="'+7(###)###-##-##'" :maxlength="16"/>
         </div>
-        <div class="mt-5 w-[23.25rem] h-[3.25rem]">
+        <div class="mt-5 h-mdh w-mdw">
             <BaseInput placeholder="Пароль" v-model="password" :type="InputType.Password"/>
         </div>
         <label class="block text-center mt-4 font-semibold text-base">Забыли пароль?</label>
-        <div class="mt-8 w-[23.25rem] h-[3.25rem]">
-            <BaseButton name="Войти" :type="ButtonType.Primary" @click="login"/>
+        <div class="mt-8 h-mdh w-mdw">
+            <BaseButton name="Войти" class="btn-primary" @click="login"/>
         </div>
         <label class="block text-center mt-4 font-semibold text-base">Установить пароль</label>
     </div>
-    <ModalError @closeModal="hideModalError" :hidden="ModalErrorHidden" :warningText="warningText"/>
+    <ModalError @closeModal="hideModalError" :hidden="ModalErrorHidden" :text="text"/>
 
 </template>

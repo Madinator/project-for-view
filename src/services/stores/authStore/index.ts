@@ -8,8 +8,11 @@ export const authStore = defineStore("authStore", {
     state: () => ({
         numberPhone: '',
         password: '',
-        status: 200,
         isRegister: true,
+        response: { 
+          error: true,
+          text: 'Something went wrong'
+        }
     }),
     actions: { 
       async login() {
@@ -25,9 +28,17 @@ export const authStore = defineStore("authStore", {
               }
             },
             onError: (v: AxiosError & { response: any }) => {
-              this.status = v.response.status;   
-            },
-          });
+              let status = v.response.status; 
+
+              if(status === 403) {
+                this.response = { error: true, text: "Введен неверный пароль"};            
+              }
+          
+              if(status === 400) {
+                this.response = { error: true, text: "На этот номер не зарегистрировано ОСИ"}; 
+              }
+            },   
+        });
       },
       logout() {
           tokenService.clearToken();
@@ -47,7 +58,7 @@ export const authStore = defineStore("authStore", {
           },
           onError: (v: AxiosError & { response: any }) => {
             this.status = v.response.status;   
-          },
+          }
         });
       }
     }

@@ -1,5 +1,5 @@
 .input {
-    @apply border-2 rounded-default caret-transparent px-7 py-1 text-base tracking-wide font-normal;
+    @apply border-2 rounded-default caret-transparent px-7 py-1 text-base border-primary-gray tracking-wide font-normal;
     &:focus {
         @apply caret-black-default;
     }

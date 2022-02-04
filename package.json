@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.25.0",
     "dayjs": "^1.10.7",
+    "maska": "^1.5.0",
     "pinia": "^2.0.9",
     "vue": "^3.2.25",
     "vue-axios": "^3.4.0"

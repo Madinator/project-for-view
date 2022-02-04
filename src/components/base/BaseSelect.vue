@@ -11,10 +11,8 @@ const Component = defineComponent({
 </script>
 
 <template>
-    <div class="flex flex-col">
-        <div class="select w-[23.25rem] h-[3.25rem]">
-        </div>
-        <span class="select w-[23.25rem] h-[3.25rem]">Option 1</span>
-        <span class="select w-[23.25rem] h-[3.25rem]">Option 2</span>
-    </div>
+    <select class="select w-full h-full">
+        <option class="select w-full h-full" value="">Option 1</option>
+        <option class="select w-full h-full" value="">Option 2</option>
+    </select>
 </template>

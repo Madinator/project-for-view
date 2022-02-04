@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { InputType } from "../../utils/constants";
-import { defineComponent, PropType, defineProps, toRefs } from 'vue';
+import { defineComponent ,PropType, defineProps, toRefs, ref, onMounted } from 'vue';
 
+const Component = defineComponent({
+    
+})
 const props = defineProps({
     modelValue: String,
     type: {
@@ -9,30 +12,32 @@ const props = defineProps({
         default: InputType.Default,
     },
     placeholder: String,
+    mask: {
+        type: String,
+        default: ''
+    },
+    maxlength: {
+        type: Number,
+        default: 9999,
+    }
 })
+const { type, placeholder, maxlength, mask } = toRefs(props);
 
-const { type, placeholder } = toRefs(props);
+const emit = defineEmits(['update:modelValue'])
 
-const Component = defineComponent({
-})
+function emitValue(event) : void {
+    emit('update:modelValue', event.target.value)
+}
+
 </script>
 
 <template>
-    <input 
+    <input
     class="input w-full h-full" 
-    type="" 
-    v-if="type === InputType.Default" 
-    :placeholder="placeholder" :value="modelValue" 
-    @input="$emit('update:modelValue', $event.target.value)">
-    <input class="input w-full h-full" 
-    type="" 
-    v-if="type === InputType.Phone" 
+    :type="type" 
     :placeholder="placeholder" 
-    @input="$emit('update:modelValue', $event.target.value)">
-    <input 
-    class="input w-full h-full"
-    type="password" 
-    v-if="type === InputType.Password" 
-    :placeholder="placeholder" 
-    @input="$emit('update:modelValue', $event.target.value)">
+    @input="emitValue($event)"
+    :maxlength="maxlength"
+    v-maska="mask"
+    />
 </template>
