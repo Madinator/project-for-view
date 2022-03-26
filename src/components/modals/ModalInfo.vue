@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { defineComponent, PropType, defineProps, toRefs } from 'vue';
+import { defineProps } from 'vue';
 
-
-const Component = defineComponent({
-})
 
 const props = defineProps({
     text: String,

@@ -1,11 +1,5 @@
 <script setup lang="ts">
 import { defineComponent, PropType, defineProps, toRefs } from 'vue';
-import BaseButton from '../base/BaseButton.vue';
-
-
-const Component = defineComponent({
-    BaseButton,
-})
 
 const props = defineProps({
     text: String,

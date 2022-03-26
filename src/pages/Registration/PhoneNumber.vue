@@ -8,9 +8,6 @@ const AuthStore = authStore();
 const { numberPhone, isRegister, response } = storeToRefs(AuthStore);
 
 
-const Component = defineComponent({
-})
-
 let ModalInfoHidden = ref(true);
 let text = ref('');
 

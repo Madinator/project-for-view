@@ -2,10 +2,6 @@
 import { defineComponent, PropType, defineProps, toRefs } from 'vue';
 import { InputType } from "../../utils/constants"
 
-
-const Component = defineComponent({
-   
-})
 </script>
 
 <template>
